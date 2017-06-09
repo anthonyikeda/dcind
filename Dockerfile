@@ -1,12 +1,12 @@
-FROM alpine:3.3
+FROM alpine:3.5
 MAINTAINER Yusuke KUOKA <kuoka@chatwork.com>
 
-ENV DOCKER_VERSION=1.11.1 \
-    DOCKER_COMPOSE_VERSION=1.7.1
+ENV DOCKER_VERSION=17.05.0-ce \
+    DOCKER_COMPOSE_VERSION=1.13.0
 
 # Install Docker, Docker Compose
 RUN apk --update --no-cache \
-        add curl device-mapper mkinitfs zsh e2fsprogs e2fsprogs-extra iptables && \
+        add curl device-mapper mkinitfs zsh e2fsprogs e2fsprogs-extra iptables git && \
         curl https://get.docker.com/builds/Linux/x86_64/docker-${DOCKER_VERSION}.tgz | tar zx && \
         mv /docker/* /bin/ && chmod +x /bin/docker* \
     && \
